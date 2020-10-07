@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        
+        // It should automatically exit the app when the back button is pressed on Android.
+        // Input.backButtonLeavesApp = true;
+        // If that does not work then kill the process:
+        // System.Diagnostics.Process.GetCurrentProcess().Kill();
+
     }
 
     public int totalCoins = 0;
@@ -26,5 +32,15 @@ public class GameManager : MonoBehaviour
     {
         return totalCoins;
     }
-
+    
+    public void QuitApplication()
+    {
+        #if UNITY_EDITOR
+            Debug.Log("Unity editor quit");
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+            Debug.Log("Application Quit");
+        #endif
+    }
 }
