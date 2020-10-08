@@ -3,13 +3,12 @@ using UnityEngine.Advertisements;
 
 public class RewardedAdsScript : MonoBehaviour, IUnityAdsListener
 {
-
-    string gameId = "3808988";
-    string myPlacementId = "rewardedVideo";
-    bool testMode = true;
+    private string gameId = "3808988";
+    private string myPlacementId = "rewardedVideo";
+    private bool testMode = true;
 
     // Initialize the Ads listener and service:
-    void Start()
+    private void Start()
     {
         Advertisement.AddListener(this);
         Advertisement.Initialize(gameId, testMode);
@@ -19,13 +18,9 @@ public class RewardedAdsScript : MonoBehaviour, IUnityAdsListener
     {
         // Check if UnityAds ready before calling Show method:
         if (Advertisement.IsReady(myPlacementId))
-        {
             Advertisement.Show(myPlacementId);
-        }
         else
-        {
             Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
-        }
     }
 
 
@@ -37,7 +32,7 @@ public class RewardedAdsScript : MonoBehaviour, IUnityAdsListener
         {
             // Reward the user for watching the ad to completion.
             print("Ad was presented. Added 100 coins");
-            UIManager.Instance.UpdateCoinTotal(100);
+            GameManager.Instance.UpdateCoinTotal(100);
         }
         else if (showResult == ShowResult.Skipped)
         {

@@ -5,17 +5,16 @@ using UnityEngine.Advertisements;
 [RequireComponent(typeof(Button))]
 public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 {
-
 #if UNITY_IOS
     private string gameId = "3808988";
 #elif UNITY_ANDROID
     private string gameId = "3808989";
 #endif
 
-    Button myButton;
+    private Button myButton;
     public string myPlacementId = "rewardedVideo";
 
-    void Start()
+    private void Start()
     {
         myButton = GetComponent<Button>();
 
@@ -24,13 +23,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
         // Map the ShowRewardedVideo function to the button’s click listener:
         if (myButton)
-        {
             myButton.onClick.AddListener(ShowRewardedVideo);
-        }
         else
-        {
             Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
-        }
 
         // Initialize the Ads listener and service:
         Advertisement.AddListener(this);
@@ -38,7 +33,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     }
 
     // Implement a function for showing a rewarded video ad:
-    void ShowRewardedVideo()
+    private void ShowRewardedVideo()
     {
         Advertisement.Show(myPlacementId);
     }
@@ -47,10 +42,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     public void OnUnityAdsReady(string placementId)
     {
         // If the ready Placement is rewarded, activate the button: 
-        if (placementId == myPlacementId)
-        {
-            myButton.interactable = true;
-        }
+        if (placementId == myPlacementId) myButton.interactable = true;
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -60,7 +52,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
         {
             // Reward the user for watching the ad to completion.
             print("Ad was presented. Added 100 coins");
-            UIManager.Instance.UpdateCoinTotal(100);
+            GameManager.Instance.UpdateCoinTotal(100);
         }
         else if (showResult == ShowResult.Skipped)
         {

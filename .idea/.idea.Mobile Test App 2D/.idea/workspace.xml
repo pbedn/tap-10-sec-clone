@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e30d5c22-2e0b-478f-9088-aa657201e3bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mobile Test App 2D/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RewardedAdsButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RewardedAdsButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Start.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Start.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unused/AdsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unused/AdsManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,11 +43,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/1f/4a3135d9/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StartManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/fc/01d8999d/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/unused/AdsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/StartManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/RewardedAdsButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -27,16 +66,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34993774" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30012453" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10880">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="10880" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -61,11 +102,26 @@
       <option name="presentableId" value="Default" />
       <updated>1602101719706</updated>
       <workItem from="1602101739352" duration="3486000" />
+      <workItem from="1602156792665" duration="904000" />
+      <workItem from="1602182733128" duration="2213000" />
+      <workItem from="1602186345302" duration="11692000" />
     </task>
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -74,13 +130,96 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602101878223" />
-    <state x="341" y="150" key="SettingsEditor" timestamp="1602108378587">
+    <state x="587" y="360" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1602192421927">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="341" y="150" key="SettingsEditor/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602108378587" />
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1602102651516">
+    <state x="587" y="360" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602192421927" />
+    <state width="1637" height="207" key="GridCell.Tab.0.bottom" timestamp="1602199135178">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602102651516" />
+    <state width="1637" height="207" key="GridCell.Tab.0.bottom/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.0.center" timestamp="1602199135178">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.0.center/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.0.left" timestamp="1602199135178">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.0.left/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.0.right" timestamp="1602199135178">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.0.right/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.1.bottom" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.1.bottom/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.1.center" timestamp="1602199135178">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.1.center/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.1.left" timestamp="1602199135178">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.1.left/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135178" />
+    <state width="1637" height="207" key="GridCell.Tab.1.right" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.1.right/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.2.bottom" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.2.bottom/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.2.center" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.2.center/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.2.left" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.2.left/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.2.right" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.2.right/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.3.bottom" timestamp="1602199135180">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.3.bottom/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135180" />
+    <state width="1637" height="207" key="GridCell.Tab.3.center" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.3.center/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.3.left" timestamp="1602199135179">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.3.left/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135179" />
+    <state width="1637" height="207" key="GridCell.Tab.3.right" timestamp="1602199135180">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="207" key="GridCell.Tab.3.right/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602199135180" />
+    <state x="245" y="1194" key="Rider.ProjectTemplateDialog.Size" timestamp="1602183057953">
+      <screen x="-116" y="1050" width="1536" height="824" />
+    </state>
+    <state x="245" y="1194" key="Rider.ProjectTemplateDialog.Size/0.0.1680.1010/-116.1050.1536.824@-116.1050.1536.824" timestamp="1602183057953" />
+    <state x="341" y="150" key="SettingsEditor" timestamp="1602188488629">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="341" y="150" key="SettingsEditor/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602188488629" />
+    <state width="848" height="513" key="XDebugger.FullValuePopup" timestamp="1602188242237">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="848" height="513" key="XDebugger.FullValuePopup/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602188242237" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1602191919233">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010/-116.1050.1536.824@0.0.1680.1010" timestamp="1602191919233" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#TMPro.TMP_Text" memberName="text" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
