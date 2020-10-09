@@ -23,4 +23,9 @@ public class StartManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+
+    public void HowToPlayButton()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
 }
