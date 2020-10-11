@@ -5,19 +5,9 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class TouchLocation
-{
-    public int touchId;
-    public GameObject circle;
-
-    public TouchLocation(int newTouchId, GameObject newCircle)
-    {
-        touchId = newTouchId;
-        circle = newCircle;
-    }
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -26,10 +16,20 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameScore;
     public Button restartButton;
     public GameObject circle;
+    public GameObject userCountText;
+    public Transform pointerSpawnHolder;
 
-    [Header("User Actions")] [SerializeField]
-    private int userTouchCount = 0;
-    private List<TouchLocation> touches = new List<TouchLocation>();
+    [Header("User Actions")]
+    [SerializeField] private int userTouchCount = 0;
+    // [SerializeField] private List<GameObject> _pointers = new List<GameObject>();
+    private readonly Queue<GameObject> _pointersQ = new Queue<GameObject>();
+    private readonly Queue<GameObject> _textQ = new Queue<GameObject>();
+    private GameObject _lastUserPointer;
+    private GameObject _lastUserCount;
+    private Image _lastUserPointerImage;
+    private TextMeshProUGUI _lastUserCountText;
+
+    private bool _timerIsOn = false;
     
     #region Singleton
 
@@ -63,11 +63,21 @@ public class GameManager : MonoBehaviour
     {
 
     #if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _timerIsOn)
         {
-            print("Mouse click: " + userTouchCount);
-            userTouchCount++;
-            CreateCircleMouse(Input.mousePosition); // TODO: Does not work
+            try
+            {
+                StopCoroutine(FadeOut.FadeImage(_lastUserPointerImage));
+                StopCoroutine(FadeOut.FadeText(_lastUserCountText));
+                Destroy(_lastUserCount);
+                Destroy(_lastUserPointer);
+                _pointersQ.Dequeue();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            UpdateMouseClick();
         }
     #endif
 
@@ -75,42 +85,84 @@ public class GameManager : MonoBehaviour
         
         // One way to do it. I am counting only single finger touches here, and it is bit expensive
         // Touch is not like MouseButonDown, it is more like MouseButton => you keep pressing and counter increases
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && _timerIsOn)
         {
             Touch t = Input.GetTouch(0);
             if (t.phase == TouchPhase.Began)
             {
-                userTouchCount++;
-                print("Touch: " + userTouchCount);
-                
-                // TODO: Does not work. Does not show any images ???
-                touches.Add(new TouchLocation(t.fingerId, CreateCircle(t)));
-            }
-            else if (t.phase == TouchPhase.Ended)
-            {
-                var thisTouch = touches.Find(touchLocation => touchLocation.touchId == t.fingerId);
-                Destroy(thisTouch.circle);
+                try
+                {
+                    StopCoroutine(FadeOut.FadeImage(_lastUserPointerImage));
+                    StopCoroutine(FadeOut.FadeText(_lastUserCountText));
+                    Destroy(_lastUserCount);
+                    Destroy(_lastUserPointer);
+                    _pointersQ.Dequeue();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                UpdateTouch(t);
             }
         }
     #endif
 
     }
 
+    private void UpdateTouch(Touch t)
+    {
+        userTouchCount++;
+        _lastUserPointer = CreateCircleTouch(t);
+        _lastUserCount = CreateUserCountText(t.position);
+        _pointersQ.Enqueue(_lastUserPointer);
+        _textQ.Enqueue(_lastUserCount);
+        _lastUserPointerImage = _lastUserPointer.GetComponent<Image>();
+        _lastUserCountText = _lastUserCount.GetComponent<TextMeshProUGUI>();
+        StartCoroutine(FadeOut.FadeImage(_lastUserPointerImage));
+        StartCoroutine(FadeOut.FadeText(_lastUserCountText));
+        }
+
+    private void UpdateMouseClick()
+    {
+        userTouchCount++;
+        _lastUserPointer = CreateCircleMouse(Input.mousePosition);
+        _lastUserCount = CreateUserCountText(Input.mousePosition);
+        _pointersQ.Enqueue(_lastUserPointer);
+        _textQ.Enqueue(_lastUserCount);
+        _lastUserPointerImage = _lastUserPointer.GetComponent<Image>();
+        _lastUserCountText = _lastUserCount.GetComponent<TextMeshProUGUI>();
+        StartCoroutine(FadeOut.FadeImage(_lastUserPointerImage));
+        StartCoroutine(FadeOut.FadeText(_lastUserCountText));
+    }
+
     GameObject CreateCircleMouse(Vector3 m)
     {
-        GameObject c = Instantiate(circle);
-        c.name = "Touch" + m;
+        GameObject c = Instantiate(circle, pointerSpawnHolder.transform, true);
+        c.name = "Click" + m;
         c.transform.position = m;
-        print("Instiantiate object at position" + m);
+        c.transform.localScale = new Vector3(0.4f ,0.4f, 0.4f);
+        print("Instantiate object at position" + m);
         return c;
     }
-    GameObject CreateCircle(Touch t)
+    GameObject CreateCircleTouch(Touch t)
     {
-        GameObject c = Instantiate(circle);
+        GameObject c = Instantiate(circle, pointerSpawnHolder.transform, true);
         c.name = "Touch" + t.fingerId;
         c.transform.position = t.position;
-        print("Instiantiate object at position" + t.position);
+        print("Instantiate object at position" + t.position);
         return c;
+    }
+
+    GameObject CreateUserCountText(Vector3 position)
+    {
+        GameObject t = Instantiate(userCountText, pointerSpawnHolder, true);
+        var text = t.GetComponent<TextMeshProUGUI>();
+        text.text = userTouchCount.ToString();
+        t.name = "UserCountText: " + text.text;
+        t.transform.position = position + new Vector3(0, 70, 0);
+        t.transform.localScale = new Vector3(0.5f ,0.5f, 0.5f);
+        print("Instantiate text object at position" + t.transform.position);
+        return t;
     }
 
     private IEnumerator UpdateCounter()
@@ -118,8 +170,27 @@ public class GameManager : MonoBehaviour
         var pressed = false;
         while (!pressed)
         {
-            if (Input.GetMouseButtonDown(0)) pressed = true;
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                pressed = true;
+                _timerIsOn = true;
+                
+                /*START GAME*/
+                UpdateMouseClick();
+            }
+ 
+            else if (Input.touchCount > 0)
+            {
+                Touch t = Input.GetTouch(0);
+                if (t.phase == TouchPhase.Began)
+                {
+                    pressed = true;
+                    _timerIsOn = true;
+                    
+                    /*START GAME*/
+                    UpdateTouch(t);
+                }
+            }
             yield return null;
         }
 
@@ -132,9 +203,24 @@ public class GameManager : MonoBehaviour
         }
 
         /* END GAME */
+        _timerIsOn = false;
+
+        /*CLEANING*/
+        foreach (var pointer in _pointersQ)
+        {
+            Destroy(pointer);
+        }
+        _pointersQ.Clear();
+        
+        foreach (var text in _textQ)
+        {
+            Destroy(text);
+        }
+        _textQ.Clear();
+        
         restartButton.gameObject.SetActive(true);
         gameScore.gameObject.SetActive(true);
-        gameScore.text = "Score: " + userTouchCount.ToString();
+        gameScore.text = "Score: " + userTouchCount;
     }
 
     public int NumberOfCoins()
@@ -150,7 +236,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
     }
 
     public void QuitApplication()
