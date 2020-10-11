@@ -2,26 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
 {
-    public int totalCoins = 0;
+    public int timer;
+    public int dollarAmount;
     public TextMeshProUGUI countText;
-    public TextMeshProUGUI gameScore;
-    public Button restartButton;
+    public TextMeshProUGUI dollarText;
     public GameObject circle;
     public GameObject userCountText;
     public Transform pointerSpawnHolder;
 
     [Header("User Actions")]
-    [SerializeField] private int userTouchCount = 0;
-    // [SerializeField] private List<GameObject> _pointers = new List<GameObject>();
+    public int userTouchCount;
     private readonly Queue<GameObject> _pointersQ = new Queue<GameObject>();
     private readonly Queue<GameObject> _textQ = new Queue<GameObject>();
     private GameObject _lastUserPointer;
@@ -29,33 +25,14 @@ public class GameManager : MonoBehaviour
     private Image _lastUserPointerImage;
     private TextMeshProUGUI _lastUserCountText;
 
-    private bool _timerIsOn = false;
-    
-    #region Singleton
-
-    private static GameManager _instance;
-
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                Debug.LogError("GameManager is NULL");
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        _instance = this;
-    }
-
-    #endregion
+    private bool _timerIsOn;
 
     private void Start()
     {
-        restartButton.gameObject.SetActive(false);
-        gameScore.gameObject.SetActive(false);
+        dollarAmount = 0;
+        dollarText.text = "$ " + dollarAmount;
+        userTouchCount = 0;
+        countText.text = timer.ToString();
         StartCoroutine(UpdateCounter());
     }
 
@@ -78,6 +55,7 @@ public class GameManager : MonoBehaviour
                 Console.WriteLine(e);
             }
             UpdateMouseClick();
+            UpdateDollarAmount();
         }
     #endif
 
@@ -103,10 +81,20 @@ public class GameManager : MonoBehaviour
                     Console.WriteLine(e);
                 }
                 UpdateTouch(t);
+                UpdateDollarAmount();
             }
         }
     #endif
 
+    }
+
+    private void UpdateDollarAmount()
+    {
+        if (userTouchCount % 10 == 0)
+        {
+            dollarAmount++;
+            dollarText.text = "$ " + dollarAmount;
+        }
     }
 
     private void UpdateTouch(Touch t)
@@ -149,7 +137,7 @@ public class GameManager : MonoBehaviour
         GameObject c = Instantiate(circle, pointerSpawnHolder.transform, true);
         c.name = "Touch" + t.fingerId;
         c.transform.position = t.position;
-        print("Instantiate object at position" + t.position);
+        // print("Instantiate object at position" + t.position);
         return c;
     }
 
@@ -161,7 +149,7 @@ public class GameManager : MonoBehaviour
         t.name = "UserCountText: " + text.text;
         t.transform.position = position + new Vector3(0, 70, 0);
         t.transform.localScale = new Vector3(0.5f ,0.5f, 0.5f);
-        print("Instantiate text object at position" + t.transform.position);
+        // print("Instantiate text object at position" + t.transform.position);
         return t;
     }
 
@@ -194,7 +182,8 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        var second = 10;
+        
+        var second = timer;
         while (second >= 0)
         {
             countText.text = second.ToString();
@@ -204,6 +193,8 @@ public class GameManager : MonoBehaviour
 
         /* END GAME */
         _timerIsOn = false;
+        GlobalVariables.Instance.currentDollarAmount = dollarAmount;
+        GlobalVariables.Instance.currentUserTouchCount = userTouchCount;
 
         /*CLEANING*/
         foreach (var pointer in _pointersQ)
@@ -217,41 +208,8 @@ public class GameManager : MonoBehaviour
             Destroy(text);
         }
         _textQ.Clear();
-        
-        restartButton.gameObject.SetActive(true);
-        gameScore.gameObject.SetActive(true);
-        gameScore.text = "Score: " + userTouchCount;
-    }
 
-    public int NumberOfCoins()
-    {
-        return totalCoins;
+        ScenesManager.LoadGameOverScene();
     }
-
-    public void UpdateCoinTotal(int coins)
-    {
-        print("Giving the player " + coins + " coins");
-        totalCoins += coins;
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void QuitApplication()
-    {
-        // It should automatically exit the app when the back button is pressed on Android (put it into AWAKE).
-        // Input.backButtonLeavesApp = true;
-        // If that does not work then kill the process:
-        // System.Diagnostics.Process.GetCurrentProcess().Kill();
-
-        #if UNITY_EDITOR
-            Debug.Log("Unity editor quit");
-            EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-            Debug.Log("Application Quit");
-        #endif    
-    }
+    
 }

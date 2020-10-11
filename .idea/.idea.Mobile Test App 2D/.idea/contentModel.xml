@@ -6,9 +6,12 @@
       <e p="Assets" t="Include">
         <e p="FadeOut.cs" t="Include" />
         <e p="GameManager.cs" t="Include" />
+        <e p="GameOverManager.cs" t="Include" />
+        <e p="GlobalVariables.cs" t="Include" />
         <e p="HowToPlayManager.cs" t="Include" />
         <e p="RewardedAdsButton.cs" t="Include" />
-        <e p="ScriptTemplate.cs" t="Include" />
+        <e p="ScenesManager.cs" t="Include" />
+        <e p="Singleton.cs" t="Include" />
         <e p="StartManager.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">

@@ -32,7 +32,7 @@ public class RewardedAdsScript : MonoBehaviour, IUnityAdsListener
         {
             // Reward the user for watching the ad to completion.
             print("Ad was presented. Added 100 coins");
-            GameManager.Instance.UpdateCoinTotal(100);
+            // GameManager.Instance.UpdateCoinTotal(100);
         }
         else if (showResult == ShowResult.Skipped)
         {
