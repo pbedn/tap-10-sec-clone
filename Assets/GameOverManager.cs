@@ -13,17 +13,27 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        _bestScore = GlobalVariables.Instance.bestScore;
+        _bestScore = PlayerPrefs.GetInt("best_score");
+        _totalDollarAmount = PlayerPrefs.GetInt("total_dollar_amount");
+        
+        print(">>>>>>>>>>>>>>>>");
+        Debug.Log(_bestScore);
+        Debug.Log(_totalDollarAmount);
+        print(">>>>>>>>>>>>>>>>");
+        
         ScenesManager.PreviousScene = SceneManager.GetActiveScene().buildIndex;
         lastGameScoreText.text = "Your Score: " + GlobalVariables.Instance.currentUserTouchCount;
         bestScoreText.text = GetBestScore();
         totalDollarAmountText.text = GetTotalDollarAmount();
+        
+        PlayerPrefs.SetInt("best_score", _bestScore);
+        PlayerPrefs.SetInt("total_dollar_amount", _totalDollarAmount);
     }
 
     private string GetTotalDollarAmount()
     {
-        GlobalVariables.Instance.totalDollarAmount += GlobalVariables.Instance.currentDollarAmount;
-        return GlobalVariables.Instance.totalDollarAmount.ToString();
+        _totalDollarAmount += GlobalVariables.Instance.currentDollarAmount;
+        return _totalDollarAmount.ToString();
     }
 
     private string GetBestScore()
@@ -32,7 +42,6 @@ public class GameOverManager : MonoBehaviour
         if (currentScore > _bestScore)
         {
             _bestScore = currentScore;
-            GlobalVariables.Instance.bestScore = currentScore;
         }
 
         return "Best: " + _bestScore;

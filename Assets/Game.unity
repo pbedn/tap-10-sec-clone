@@ -150,9 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bca68aab2c440f8a6c80f17f2a8b1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestScore: 0
-  totalDollarAmount: 0
   currentDollarAmount: 0
+  currentUserTouchCount: 0
 --- !u!4 &204195274
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c34435465609ae47a002a36397f6968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 2
+  timer: 10
   dollarAmount: 0
   countText: {fileID: 1288521081}
   dollarText: {fileID: 2067457831}
@@ -307,6 +306,7 @@ MonoBehaviour:
   userCountText: {fileID: 4361258053801369509, guid: 87714f7b77b48594c8c9760983cd68d0,
     type: 3}
   pointerSpawnHolder: {fileID: 925500332}
+  userTouchCount: 0
 --- !u!4 &768975478
 Transform:
   m_ObjectHideFlags: 0

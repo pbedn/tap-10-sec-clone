@@ -7,8 +7,6 @@ public class GlobalVariables : MonoBehaviour
 
     private static GlobalVariables _instance;
     
-    public int bestScore;
-    public int totalDollarAmount;
     public int currentDollarAmount;
     public int currentUserTouchCount;
 
