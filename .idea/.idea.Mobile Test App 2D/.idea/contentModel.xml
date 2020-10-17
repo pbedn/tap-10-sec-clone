@@ -9,6 +9,7 @@
         <e p="GameOverManager.cs" t="Include" />
         <e p="GlobalVariables.cs" t="Include" />
         <e p="HowToPlayManager.cs" t="Include" />
+        <e p="README.txt" t="Include" />
         <e p="RewardedAdsButton.cs" t="Include" />
         <e p="ScenesManager.cs" t="Include" />
         <e p="Singleton.cs" t="Include" />
