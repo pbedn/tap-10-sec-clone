@@ -1,6 +1,7 @@
 ﻿TODO:
 
-sound system (buttons on/off)
+sound system (buttons on/off) 
+-- IN PROGRESS --
 
 leaderboard (connect with google play services)
 

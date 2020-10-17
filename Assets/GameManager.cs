@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         c.name = "Click" + m;
         c.transform.position = m;
         c.transform.localScale = new Vector3(0.4f ,0.4f, 0.4f);
-        print("Instantiate object at position" + m);
+        // print("Instantiate object at position" + m);
         return c;
     }
     GameObject CreateCircleTouch(Touch t)

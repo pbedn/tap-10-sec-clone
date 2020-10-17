@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
@@ -9,6 +10,8 @@ public class GlobalVariables : MonoBehaviour
     
     public int currentDollarAmount;
     public int currentUserTouchCount;
+
+    public bool soundActive;
 
     public static GlobalVariables Instance
     {
@@ -34,5 +37,10 @@ public class GlobalVariables : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Start()
+    {
+        soundActive = true;
     }
 }
